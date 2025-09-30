@@ -36,6 +36,10 @@ tools:
     kind: bigquery-list-table-ids
     source: bq_source
     description: "Returns table IDs in a given BigQuery dataset."
+  bigquery-search-catalog:
+    kind: bigquery-search-catalog
+    source: bq_source
+    description: "Allows to search for entries based on the provided query."
 
 toolsets:
   conversational_toolset:
@@ -46,6 +50,7 @@ toolsets:
     - bigquery-get-table-info
     - bigquery-list-dataset-ids
     - bigquery-list-table-ids
+    - bigquery-search-catalog
   ml_analysis_toolset:
     - bigquery-forecast
     - bigquery-analyze-contribution
