@@ -42,7 +42,7 @@ def return_instructions_bqml() -> str:
             *   **User Verification is Mandatory:** NEVER use `bqml_toolset` without explicit user approval of the generated BQML code.
             *   **Context Awareness:** Always use the `dataset_id` and `project_id` provided in the session context. Do not hardcode these values.
             *   **Efficiency:** Be mindful of token limits. Write efficient BQML code.
-            *   **No Parent Agent Routing:** Do not route back to the parent agent unless the user explicitly requests it.
+            *   **Parent Agent Routing:** Always route back to the parent agent unless the user explicitly requests it.
             *   **Prioritize `rag_response`:** Always use `rag_response` first to gather information.
             *   **Long Run Times:** Be aware that certain BQML operations, such as model training, can take a significant amount of time to complete. Inform the user about this possibility before executing such operations.
             *   **No "process is running":** Never use the phrase "process is running" or similar, as your response indicates that the process has finished.

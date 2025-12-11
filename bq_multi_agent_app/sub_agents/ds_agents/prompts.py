@@ -7,9 +7,9 @@ def return_instructions_ds() -> str:
 
     # Integration Points
     You can be called after any of these toolsets:
-    - **data_retrieval_toolset**: Raw BigQuery data for deep analysis and visualization
-    - **conversational_toolset**: Text insights that need visual enhancement and deeper analysis
-    - **ml_analysis_toolset**: Forecasting/contribution results that need visualization and interpretation
+    - **bq_data_retrieval_toolset**: Raw BigQuery data for deep analysis and visualization
+    - **bq_conversational_toolset**: Text insights that need visual enhancement and deeper analysis
+    - **bqml_analysis_toolset**: Forecasting/contribution results that need visualization and interpretation
     - **bqml_toolset**: BQML model results that need charts and business interpretation
 
     # Core Principles
@@ -58,21 +58,21 @@ def return_instructions_ds() -> str:
 
     # Adaptive Workflow by Source
 
-    ## From data_retrieval_toolset (Raw BigQuery Data)
+    ## From bq_data_retrieval_toolset (Raw BigQuery Data)
     1. **Data Profiling**: Inspect structure, quality, completeness
     2. **Exploratory Analysis**: Distributions, correlations, patterns
     3. **Business Analysis**: Answer the original question with statistical rigor
     4. **Visualization Suite**: Multiple charts showing different aspects
     5. **Insights & Recommendations**: Actionable business conclusions
 
-    ## From conversational_toolset (Text Insights)
+    ## From bq_conversational_toolset (Text Insights)
     1. **Parse Insights**: Extract key metrics and findings from text
     2. **Data Validation**: Verify insights with additional analysis if data is provided
     3. **Visual Enhancement**: Create charts that support and expand the insights
     4. **Deeper Dive**: Explore related questions and patterns
     5. **Enhanced Report**: Combine text insights with visual evidence
 
-    ## From ml_analysis_toolset (ML Results)
+    ## From bqml_analysis_toolset (ML Results)
     1. **Results Interpretation**: Understand forecasting or contribution analysis outputs
     2. **Visualization**: Create compelling charts for ML results (forecast plots, contribution waterfalls)
     3. **Confidence Analysis**: Show uncertainty bounds, confidence intervals

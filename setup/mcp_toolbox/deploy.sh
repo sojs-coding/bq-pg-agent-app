@@ -15,6 +15,13 @@ REPOSITORY_NAME="mcp-toolbox"
 IMAGE_NAME="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY_NAME}/${SERVICE_NAME}"
 SERVICE_ACCOUNT="mcp-toolbox-identity"
 
+# Postgres Configuration
+PG_PROJECT=
+PG_INSTANCE=
+PG_DB=
+PG_USER_NAME=
+PG_PASSWORD=
+
 # Check project ID
 if [ -z "$PROJECT_ID" ]; then
     echo "Error: GOOGLE_CLOUD_PROJECT environment variable is not set"
@@ -71,6 +78,10 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:${SERVICE_ACCOUNT}@${PROJECT_ID}.iam.gserviceaccount.com \
     --role roles/ml.developer
 
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:${SERVICE_ACCOUNT}@${PROJECT_ID}.iam.gserviceaccount.com \
+    --role roles/cloudsql.client
+
 # Create Artifact Registry repository if needed
 echo "Setting up Artifact Registry repository..."
 if ! gcloud artifacts repositories describe $REPOSITORY_NAME --location=$REGION --project=$PROJECT_ID >/dev/null 2>&1; then
@@ -112,8 +123,9 @@ gcloud run deploy $SERVICE_NAME \
     --cpu 2 \
     --timeout 3600 \
     --max-instances 2 \
-    --set-env-vars BIGQUERY_PROJECT=$PROJECT_ID \
-    --project=$PROJECT_ID
+    --project=$PROJECT_ID \
+    --set-env-vars BIGQUERY_PROJECT=$PROJECT_ID,PG_PROJECT=$PG_PROJECT,PG_INSTANCE=$PG_INSTANCE,PG_DB=$PG_DB,PG_USER_NAME=$PG_USER_NAME,PG_PASSWORD=$PG_PASSWORD
+
 
 # Get service URL
 SERVICE_URL=$(gcloud run services describe $SERVICE_NAME --region=$REGION --format='value(status.url)' --project=$PROJECT_ID)

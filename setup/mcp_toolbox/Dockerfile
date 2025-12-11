@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install MCP toolbox
-RUN curl -O https://storage.googleapis.com/genai-toolbox/v0.14.0/linux/amd64/toolbox && \
+RUN curl -O https://storage.googleapis.com/genai-toolbox/v0.22.0/linux/amd64/toolbox && \
     chmod +x toolbox
 
 # Copy the custom tools configuration
@@ -21,6 +21,11 @@ EXPOSE 8080
 
 # Set environment variables (will be overridden by Cloud Run deployment)
 ENV BIGQUERY_PROJECT=""
+ENV PG_PROJECT=""
+ENV PG_INSTANCE=""
+ENV PG_DB=""
+ENV PG_USER_NAME=""
+ENV PG_PASSWORD=""
 ENV PORT=8080
 
 # Start toolbox with custom configuration using PORT environment variable

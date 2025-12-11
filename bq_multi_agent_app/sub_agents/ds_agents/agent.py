@@ -15,7 +15,7 @@ from google.adk.code_executors.vertex_ai_code_executor import \
 from .prompts import return_instructions_ds
 
 root_agent = Agent(
-    model='gemini-2.5-flash',
+    model='gemini-3-pro-preview',
     name="ds_agent",
     instruction=return_instructions_ds(),
     code_executor=VertexAiCodeExecutor(

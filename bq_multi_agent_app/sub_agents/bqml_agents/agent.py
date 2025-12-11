@@ -14,7 +14,7 @@ from .tools import check_bq_models
 from .tools import rag_response
 
 root_agent = Agent(
-    model='gemini-2.5-flash',
+    model='gemini-3-pro-preview',
     name="bqml_agent",
     instruction=return_instructions_bqml(),
     tools=[
