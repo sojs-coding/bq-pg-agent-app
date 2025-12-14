@@ -7,6 +7,7 @@ data science libraries for analysis and visualization.
 Note: This agent must be wrapped as a tool (not used as sub-agent) to prevent
 function call interpretation errors.
 """
+import os
 
 from google.adk.agents import Agent
 from google.adk.code_executors.vertex_ai_code_executor import \
@@ -15,7 +16,7 @@ from google.adk.code_executors.vertex_ai_code_executor import \
 from .prompts import return_instructions_ds
 
 root_agent = Agent(
-    model='gemini-3-pro-preview',
+    model=os.getenv("DEFAULT_GOOGLE_MODEL", "gemini-2.5-pro"),
     name="ds_agent",
     instruction=return_instructions_ds(),
     code_executor=VertexAiCodeExecutor(

@@ -5,6 +5,7 @@ This agent specializes in BigQuery ML tasks including model creation, training,
 and inspection. It uses RAG for BQML documentation and integrates with BigQuery
 through MCP toolsets.
 """
+import os
 
 from google.adk.agents import Agent
 
@@ -14,7 +15,7 @@ from .tools import check_bq_models
 from .tools import rag_response
 
 root_agent = Agent(
-    model='gemini-3-pro-preview',
+    model=os.getenv("DEFAULT_GOOGLE_MODEL", "gemini-2.5-pro"),
     name="bqml_agent",
     instruction=return_instructions_bqml(),
     tools=[

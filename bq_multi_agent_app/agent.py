@@ -21,7 +21,7 @@ from .tools import bqml_analysis_toolset
 date_today = date.today()
 
 root_agent = Agent(
-    model='gemini-3-pro-preview',
+    model='gemini-2.5-pro',
     name="bigquery_ds_agent",
     global_instruction=(
         f"""

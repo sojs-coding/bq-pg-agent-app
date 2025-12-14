@@ -3,6 +3,7 @@ PG Agent for Postgres operations.
 
 This agent specializes in Postgres tasks such as operational, read, write, and update. 
 """
+import os
 
 from google.adk.agents import Agent
 
@@ -12,7 +13,7 @@ from .tools import pg_data_retrieval_toolset
 from .tools import pg_stats_toolset
 
 root_agent = Agent(
-    model='gemini-3-pro-preview',
+    model=os.getenv("DEFAULT_GOOGLE_MODEL", "gemini-2.5-pro"),
     name="pg_agent",
     instruction=return_instructions_pg(),
     tools=[
