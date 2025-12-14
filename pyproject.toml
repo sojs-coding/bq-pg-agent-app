@@ -1,22 +1,10 @@
 [project]
-name = "bq-multi-agent-app"
+name = "bq-pg-agent-app"
 version = "0.1.0"
-description = "BigQuery Multi-Agent Application with MCP and ADK"
-requires-python = ">=3.12,<3.13"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
 dependencies = [
-    "google-adk>=1.13.0",
-    "google-cloud-bigquery>=3.0.0",
-    "google-cloud-aiplatform>=1.0.0",
-    "vertexai>=1.0.0",
-    "python-dotenv>=1.0.0",
-    "pandas>=2.0.0",
-    "numpy>=1.24.0",
+    "google-adk>=1.21.0",
+    "google-cloud-aiplatform>=1.130.0",
 ]
-
-[build-system]
-requires = ["uv_build>=0.7.19,<0.8.0"]
-build-backend = "uv_build"
-
-[tool.uv.build-backend]
-module-name = "bq_multi_agent_app"
-module-root = ""
