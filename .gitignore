@@ -4,3 +4,4 @@ setup/mcp_toolbox/toolbox
 mise.toml
 .env
 *.whl
+.adk
