@@ -1,6 +1,6 @@
 # BigQuery Agent with Google ADK
 
-A powerful AI-powered data analysis agent that combines Google BigQuery with the Google Agent Development Kit (ADK) to enable natural language interactions with your data warehouse.
+A powerful AI-powered data analysis agent that combines Google BigQuery and Google CloudSQL with the Google Agent Development Kit (ADK) to enable natural language interactions with your data warehouse.
 
 ## Quick Start
 
@@ -11,8 +11,8 @@ gcloud auth application-default login
 
 2. **Clone and Setup**
 ```bash
-git clone https://github.com/johanesalxd/bq-agent-app.git
-cd bq-agent-app
+git clone https://github.com/sojs-coding/bq-pg-agent-app.git
+cd bq-pg-agent-app
 
 # Install uv (if not already installed)
 # Visit: https://docs.astral.sh/uv/getting-started/installation/
@@ -144,6 +144,8 @@ uv run python setup/rag_corpus/test_rag.py "What BQML model types are available?
 - [Agentspace Management Guide](setup/agentspace/AGENTSPACE_MANAGEMENT_GUIDE.md) - Comprehensive guide for managing Google Cloud Agentspace agents and ReasoningEngines
 - [Vertex Extensions Setup Guide](setup/vertex_extensions/VERTEX_EXTENSIONS_GUIDE.md) - Complete guide for setting up Vertex AI Extensions for code interpretation
 - [MCP Toolbox Deployment Guide](setup/mcp_toolbox/MCP_TOOLBOX_GUIDE.md) - Deploy MCP toolbox to Google Cloud Run for production use
+- [Opentelemetry ADK Setup Guide](https://docs.cloud.google.com/stackdriver/docs/instrumentation/ai-agent-adk) - Setup Opentelemetry in ADK
+- [Opentelemetry Data Collection Guide](https://docs.cloud.google.com/stackdriver/docs/instrumentation/collect-view-multimodal-prompts-responses) - Export Opentelemetry data to BigQuery, GCS, 
 
 ## Implementation
 
@@ -234,7 +236,7 @@ The system is built on:
 
 ### Multi-Agent System Architecture
 ```
-Root Agent (bigquery_ds_agent)
+Root Agent 
 ├── Conversational Toolset (MCP Toolbox)
 │   └── bigquery-conversational-analytics    # Quick insights & answers
 ├── Data Retrieval Toolset (MCP Toolbox)
