@@ -37,7 +37,7 @@ chmod +x install-mcp-toolbox.sh
 ./install-mcp-toolbox.sh
 cd ../..
 
-# Create CloudSQL (Postgres) database via the Cloud Console
+# Create CloudSQL (Postgres) database via the Cloud Console https://docs.cloud.google.com/sql/docs/postgres
 # Follow the BQML Agent Setup to create a RAG Corpus
 # Follow the Vertex Extension Guide below to create a CODE_INTERPRETER_EXTENSION_NAME
 
