@@ -384,6 +384,7 @@ The agent connects to the MCP Toolbox (local or cloud) to provide BigQuery funct
 # Set environment variables
 # ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
+
 export $(cat .env | grep -v '^#' | xargs)
 
 uv run adk web  # or uv run adk run
@@ -392,7 +393,9 @@ uv run adk web  # or uv run adk run
 #### Option B: Deploy Agent to Cloud Run
 ```bash
 # Set environment variables
+# ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example bq_multi_agent_app/.env
+
 export $(cat .env | grep -v '^#' | xargs)
 
 uv run adk deploy cloud_run \
