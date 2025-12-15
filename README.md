@@ -42,6 +42,7 @@ cd ../..
 # Follow the Vertex Extension Guide below to create a CODE_INTERPRETER_EXTENSION_NAME
 
 # Configure the environment
+# ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
 
 # Set the environment variables
@@ -339,8 +340,10 @@ The MCP Toolbox provides BigQuery connectivity for the agent.
 
 #### Option A: Run MCP Toolbox Locally
 ```bash
-# Set environment variables
+# ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
+
+# Set environment variables
 export $(cat .env | grep -v '^#' | xargs)
 
 # Start the MCP server with custom configuration
@@ -350,11 +353,13 @@ BIGQUERY_PROJECT=$BIGQUERY_PROJECT ./toolbox --tools-file=tools.yaml --port=5000
 
 #### Option B: Deploy MCP Toolbox to Cloud Run
 ```bash
-# Set environment variables
+# ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
+
+# Set environment variables
 export $(cat .env | grep -v '^#' | xargs)
 
-# Setup and deploy
+# Setup
 cd setup/mcp_toolbox
 chmod +x deploy.sh
 ./deploy.sh
@@ -377,6 +382,7 @@ The agent connects to the MCP Toolbox (local or cloud) to provide BigQuery funct
 #### Option A: Run Agent Locally
 ```bash
 # Set environment variables
+# ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
 export $(cat .env | grep -v '^#' | xargs)
 
