@@ -1,6 +1,6 @@
-# BigQuery Agent with Google ADK
+# BigQuery and CloudSQL Agent with Google ADK
 
-A powerful AI-powered data analysis agent that combines Google BigQuery and Google CloudSQL with the Google Agent Development Kit (ADK) to enable natural language interactions with your data warehouse.
+A powerful AI-powered data analysis agent that combines Google BigQuery and Google CloudSQL Postgres with the Google Agent Development Kit (ADK) to enable natural language interactions with your data warehouse.
 
 ## Quick Start (Local Development)
 
