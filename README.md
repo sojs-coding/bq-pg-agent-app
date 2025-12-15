@@ -2,7 +2,7 @@
 
 A powerful AI-powered data analysis agent that combines Google BigQuery and Google CloudSQL with the Google Agent Development Kit (ADK) to enable natural language interactions with your data warehouse.
 
-## Quick Start
+## Quick Start (Local Development)
 
 1. **Authentication**
 ```bash
@@ -37,8 +37,14 @@ chmod +x install-mcp-toolbox.sh
 ./install-mcp-toolbox.sh
 cd ../..
 
+# Create CloudSQL (Postgres) database via the Cloud Console
+# Follow the BQML Agent Setup to create a RAG Corpus
+# Follow the Vertex Extension Guide below to create a CODE_INTERPRETER_EXTENSION_NAME
+
 # Configure the environment
 cp .env.example .env
+
+# Set the environment variables
 export $(cat .env | grep -v '^#' | xargs)
 
 # Run the MCP server with custom configuration
@@ -141,7 +147,6 @@ uv run python setup/rag_corpus/test_rag.py "What BQML model types are available?
 
 ## Additional Guides
 
-- [Agentspace Management Guide](setup/agentspace/AGENTSPACE_MANAGEMENT_GUIDE.md) - Comprehensive guide for managing Google Cloud Agentspace agents and ReasoningEngines
 - [Vertex Extensions Setup Guide](setup/vertex_extensions/VERTEX_EXTENSIONS_GUIDE.md) - Complete guide for setting up Vertex AI Extensions for code interpretation
 - [MCP Toolbox Deployment Guide](setup/mcp_toolbox/MCP_TOOLBOX_GUIDE.md) - Deploy MCP toolbox to Google Cloud Run for production use
 - [Opentelemetry ADK Setup Guide](https://docs.cloud.google.com/stackdriver/docs/instrumentation/ai-agent-adk) - Setup Opentelemetry in ADK
@@ -313,10 +318,7 @@ bq-agent-app/
 │   │   ├── cleanup_vertex_extensions.py # Clean up extensions
 │   │   ├── utils.py                 # Shared utilities
 │   │   └── VERTEX_EXTENSIONS_GUIDE.md   # Setup guide
-│   └── agentspace/                  # Agentspace Management
-│       ├── manage_agentspace.sh     # Agentspace and ReasoningEngine management
-│       ├── test_agent_engine.py     # Testing utilities
-│       └── AGENTSPACE_MANAGEMENT_GUIDE.md  # Comprehensive guide
+md  # Comprehensive guide
 └── README.md
 ```
 
@@ -452,52 +454,11 @@ adk web --session_db_url=agentengine://${agent_engine_id}
 
 **Note**: Ensure your service account has the necessary BigQuery permissions for your project. For advanced MCP configurations, refer to the [official documentation](https://googleapis.github.io/genai-toolbox/how-to/deploy_toolbox/).
 
-## Agentspace Management
-
-Once your agent is deployed to Agent Engine, you can manage it through Google Cloud Agentspace. The project includes comprehensive tools for Agentspace operations:
-
-### Features
-- **Agent Management**: List, deploy, delete, and replace agents in Agentspace
-- **ReasoningEngine Operations**: Manage ReasoningEngine sessions and handle deletion errors
-- **Error Resolution**: Automatically handle the common "child resources" deletion error
-- **Dry Run Mode**: Preview operations before execution
-
-### Quick Usage
-```bash
-cd setup/agentspace
-
-# Make script executable
-chmod +x manage_agentspace.sh
-
-# Configure your project details in the script
-# Edit manage_agentspace.sh and update:
-# - PROJECT_ID, PROJECT_NUMBER
-# - REASONING_ENGINE_ID, AS_APP
-# - AGENT_DISPLAY_NAME
-
-# Common operations
-./manage_agentspace.sh list                    # List all agents
-./manage_agentspace.sh deploy                  # Deploy new agent
-./manage_agentspace.sh delete                  # Delete existing agent
-./manage_agentspace.sh delete-reasoning-engine # Fix deletion errors
-./manage_agentspace.sh help                    # Show all commands
-```
-
-### Solving ReasoningEngine Deletion Errors
-If you encounter the error: *"The ReasoningEngine contains child resources: sessions"*, use:
-
-```bash
-# Preview what would be deleted
-./manage_agentspace.sh delete-reasoning-engine --dry-run
-
-# Delete sessions first, then ReasoningEngine (recommended)
-./manage_agentspace.sh delete-reasoning-engine
-
-# Or force delete everything at once
-./manage_agentspace.sh delete-reasoning-engine --force
-```
-
-For detailed instructions, see the [Agentspace Management Guide](setup/agentspace/AGENTSPACE_MANAGEMENT_GUIDE.md).
+## Agent Management
+Go to Google Cloud Console and search for Agent Engine. You can do the following:
+- Edit
+- Delete
+- Monitor
 
 ## Security Considerations
 
