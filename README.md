@@ -340,6 +340,7 @@ The MCP Toolbox provides BigQuery connectivity for the agent.
 
 #### Option A: Run MCP Toolbox Locally
 ```bash
+# Create .env file
 # ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
 
@@ -353,6 +354,7 @@ BIGQUERY_PROJECT=$BIGQUERY_PROJECT ./toolbox --tools-file=tools.yaml --port=5000
 
 #### Option B: Deploy MCP Toolbox to Cloud Run
 ```bash
+# Create .env file
 # ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
 
@@ -367,13 +369,14 @@ chmod +x deploy.sh
 # To deploy using a local `toolbox` binary instead of the release version, run:
 # ./deploy.sh local
 ```
-
 The script will:
 - Enable required Google Cloud APIs
 - Create a service account with BigQuery permissions
 - Build and push the Docker image
 - Deploy to Cloud Run with `--allow-unauthenticated`
 - Provide the service URL for access
+#### **Replace the url for the TOOLBOX_URL with the url provided by the deployment**
+#### Check Google Cloud Console -> Cloud Run. Ensure that under Security Tab, `Allow public access` is toggled.
 
 ### Step 2: Deploy the Agent
 
@@ -381,10 +384,11 @@ The agent connects to the MCP Toolbox (local or cloud) to provide BigQuery funct
 
 #### Option A: Run Agent Locally
 ```bash
-# Set environment variables
+# Create .env file
 # ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example .env
 
+# Set environment variables
 export $(cat .env | grep -v '^#' | xargs)
 
 uv run adk web  # or uv run adk run
@@ -392,10 +396,11 @@ uv run adk web  # or uv run adk run
 
 #### Option B: Deploy Agent to Cloud Run
 ```bash
-# Set environment variables
+# Create .env file
 # ONLY RUN THIS IF YOU HAVE NO .env FILE
 cp .env.example bq_multi_agent_app/.env
 
+# Set environment variables
 export $(cat .env | grep -v '^#' | xargs)
 
 uv run adk deploy cloud_run \
@@ -418,11 +423,13 @@ After deployment:
 export $(cat .env | grep -v '^#' | xargs)
 
 uv run adk deploy agent_engine \
-  --staging_bucket="gs://your-project-id-adk-staging" \
-  --display_name="BigQuery Multi-Agent App" \
-  --trace_to_cloud \
-  --env_file=.env \
-  ./bq_multi_agent_app
+--project=your-project-id \
+--region=us-central1 \
+--staging_bucket=gs://staging-bucket-id \
+--trace_to_cloud \
+--display_name=agent-display-name \
+--env_file=.env \
+./bq_multi_agent_app/
 ```
 
 Or to update existing Agent Engine:
@@ -431,12 +438,14 @@ Or to update existing Agent Engine:
 export $(cat .env | grep -v '^#' | xargs)
 
 uv run adk deploy agent_engine \
-  --staging_bucket="gs://your-project-id-adk-staging" \
-  --display_name="BigQuery Multi-Agent App" \
-  --trace_to_cloud \
-  --env_file=.env \
-  --agent_engine_id=your-agent-engine-id \
-  ./bq_multi_agent_app
+--project=your-project-id \
+--region=us-central1 \
+--staging_bucket=gs://staging-bucket-id \
+--trace_to_cloud \
+--display_name=agent-display-name \
+--env_file=.env \
+--agent_engine_id agent-engine-id \
+./bq_multi_agent_app/
 ```
 
 After deployment:
