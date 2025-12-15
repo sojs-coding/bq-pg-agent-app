@@ -20,12 +20,12 @@ COPY tools.yaml .
 EXPOSE 8080
 
 # Set environment variables (will be overridden by Cloud Run deployment)
-ENV BIGQUERY_PROJECT=""
-ENV PG_PROJECT=""
-ENV PG_INSTANCE=""
-ENV PG_DB=""
-ENV PG_USER_NAME=""
-ENV PG_PASSWORD=""
+ENV BIGQUERY_PROJECT="agentspace-demo-461406"
+ENV PG_PROJECT="agentspace-demo-461406"
+ENV PG_INSTANCE="instance1"
+ENV PG_DB="database"
+ENV PG_USER_NAME="postgres"
+ENV PG_PASSWORD="Password123!"
 ENV PORT=8080
 
 # Start toolbox with custom configuration using PORT environment variable

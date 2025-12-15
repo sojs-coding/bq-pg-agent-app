@@ -10,17 +10,10 @@ fi
 # Configuration
 PROJECT_ID=${GOOGLE_CLOUD_PROJECT}
 REGION=${GOOGLE_CLOUD_LOCATION:-us-central1}
-SERVICE_NAME="mcp-toolbox-bq"
+SERVICE_NAME="mcp-toolbox-bq-test"
 REPOSITORY_NAME="mcp-toolbox"
 IMAGE_NAME="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY_NAME}/${SERVICE_NAME}"
 SERVICE_ACCOUNT="mcp-toolbox-identity"
-
-# Postgres Configuration
-PG_PROJECT=
-PG_INSTANCE=
-PG_DB=
-PG_USER_NAME=
-PG_PASSWORD=
 
 # Check project ID
 if [ -z "$PROJECT_ID" ]; then
