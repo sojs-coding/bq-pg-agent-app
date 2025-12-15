@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "fsspec[gcs]>=2025.12.0",
     "google-adk>=1.21.0",
     "google-cloud-aiplatform>=1.130.0",
     "opentelemetry-exporter-gcp-logging>=1.11.0a0",
